@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAZO - Your Place for Joy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Body Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* Using Poppins for a modern look */
+            line-height: 1.6;
+            color: #333;
+            background-color: #000000; /* Lighter, subtle background for a happier feel */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            background-color: #000000; /* A shade of purple */
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .top-nav .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #00ffee;
+            text-decoration: none;
+        }
+
+        .top-nav nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .top-nav nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05em;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .top-nav nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        /* Header - Hazo Heading */
+        header {
+            background-color: #00ffee; /* Medium Purple for header */
+            color: #000000;
+            padding: 60px 0 40px 0; /* Adjusted padding */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            position: relative; 
+            overflow: hidden; 
+        }
+
+        header h1 {
+            font-size: 4em; /* Larger heading */
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.4em;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 30px auto; /* Added bottom margin */
+        }
+        
+        /* Navigation Bar (inside header - will be replaced by top-nav for main navigation) */
+        header nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+
+        /* Main Content Section */
+        main {
+            flex-grow: 1;
+            padding: 30px 0; 
+        }
+
+        .section {
+            background-color: #ffffff;
+            padding: 40px;
+            margin-bottom: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            font-size: 3em; 
+            color: #000000; /* Slate Blue for section headings */
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #00ffee; /* Purple underline */
+            border-radius: 2px;
+        }
+
+        /* About Hazo Section */
+        .about-hazo-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-hazo-content img {
+            max-height: 100%;
+            max-width: 100%;
+            flex: 1 1 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .about-hazo-content div {
+            flex: 1 1 400px;
+        }
+
+        .about-hazo-content h3 {
+            font-size: 2.2em;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .about-hazo-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+
+        /* Why Hazo Section */
+        .why-hazo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px; 
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .why-hazo-item {
+            flex: 1 1 calc(33.333% - 40px); /* Approx 3 items per row */
+            min-width: 280px;
+            background-color: #00ffee; /* Lavender background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+
+        .why-hazo-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .why-hazo-item img {
+            width: 80px; /* Size of icons */
+            height: 80px;
+            margin: 0 auto 20px auto; /* Center the image */
+            border-radius: 50%; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        .why-hazo-item h3 {
+            color: #000000; /* Dark Slate Blue for subheadings */
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .why-hazo-item p {
+            font-size: 1.1em;
+            color: #333;
+            flex-grow: 1; 
+        }
+
+        /* Call to Action Section */
+        .call-to-action {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #00ffee; /* Orchid color */
+            color: #000000;
+            border-radius: 12px;
+            margin-top: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .call-to-action h2 {
+            color: #000000;
+            margin-bottom: 30px;
+            padding-bottom: 0;
+        }
+        .call-to-action h2::after {
+            display: none;
+        }
+
+
+        .call-to-action .button {
+            display: inline-block;
+            background-color: #000000; /* Dark Slate Blue */
+            color: #ffffff;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: 600; 
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+
+        .call-to-action .button:hover {
+            background-color: #00ffee; /* Slate Blue */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .playstore-link {
+            display: block; 
+            margin-top: 40px; 
+            text-align: center;
+        }
+
+        .playstore-link img {
+            max-width: 200px;
+            height: auto;
+            transition: transform 0.2s ease;
+        }
+
+        .playstore-link img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto; /* Pushes footer to the bottom */
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .why-hazo-item {
+                flex: 1 1 calc(50% - 30px); /* 2 items per row */
+            }
+            .about-hazo-content img,
+            .about-hazo-content div {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .top-nav nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            header { padding: 60px 0 30px 0; }
+            header h1 { font-size: 3em; }
+            header p { font-size: 1.1em; }
+            .section h2 { font-size: 2.5em; margin-bottom: 30px; }
+            .section h2::after { width: 60px; }
+            .why-hazo-item { flex: 1 1 100%; padding: 25px; }
+            .why-hazo-item img { max-width: 70px; height: 70px; }
+            .why-hazo-item h3 { font-size: 1.6em; }
+            .why-hazo-item p { font-size: 1em; }
+            .call-to-action { padding: 40px 15px; }
+            .call-to-action h2 { font-size: 2em; }
+            .call-to-action .button { font-size: 1.2em; padding: 15px 30px; }
+            .playstore-link img { max-width: 180px; }
+        }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 2.2em; }
+            header p { font-size: 0.95em; }
+            .section { padding: 25px; }
+            .section h2 { font-size: 2em; margin-bottom: 25px; }
+            .why-hazo-item { padding: 20px; }
+            .why-hazo-item img { max-width: 60px; height: 60px; }
+            .why-hazo-item h3 { font-size: 1.4em; }
+            .call-to-action .button { font-size: 1.1em; padding: 12px 25px; }
+            .playstore-link img { max-width: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <div class="container">
+            <a href="#" class="logo">HAZO</a>
+
+            <nav>
+                <a href="#about-hazo">About Hazo</a>
+                <a href="#why-hazo">Why Hazo?</a>
+                <a href="#call-to-action">Get Started</a>
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>Welcome to HAZO!</h1>
+            <p>Your ultimate destination for joy, peace, and positive vibes. Discover your happy place with Hazo.</p>
+            </div>
+    </header>
+
+    <main>
+        <section id="about-hazo" class="section container">
+            <h2>About HAZO</h2>
+            <div class="about-hazo-content">
+                <img src="IMAGES/IMG_20250714_110748.jpg" alt="HAZO App Interface">
+                <div>
+                    <h3>More Than Just an App</h3>
+                    <p>HAZO is designed to be your daily companion in the pursuit of happiness. We believe in the power of positivity and self-care to transform lives. Our platform offers a curated experience, blending entertaining content with mindfulness tools to cater to your emotional well-being.</p>
+                    <p>Whether you need a quick laugh, a moment of calm, or inspiration to get through your day, Hazo has something for everyone. We are constantly updating our content to ensure you always have fresh and engaging ways to find your joy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-hazo" class="section container">
+            <h2>Why Choose HAZO?</h2>
+            <div class="why-hazo-grid">
+                <div class="why-hazo-item">
+                    <img src="IMAGES/MOOD BOOST ICON.png" alt="Mood Boost Icon">
+                    <h3>Boost Your Mood</h3>
+                    <p>Discover uplifting content, inspiring stories, and activities specifically designed to bring a smile to your face and brighten your day.</p>
+                </div>
+                <div class="why-hazo-item">
+                    <img src="IMAGES/STRESS RELIEF.jpg" alt="Stress Relief Icon">
+                    <h3>Stress Relief</h3>
+                    <p>Find tranquility with guided meditations, calming soundscapes, and soothing visuals that help you unwind and reduce daily stress.</p>
+                </div>
+                <div class="why-hazo-item">
+                    <img src="IMAGES/LAUGH.png" alt="Entertainment Icon">
+                    <h3>Endless Entertainment</h3>
+                    <p>Dive into a curated world of hilarious memes, entertaining short flicks, and witty skits. Your daily dose of laughter is just a tap away!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="call-to-action" class="section container call-to-action">
+            <h2>Ready to find your Happy Zone?</h2>
+            <p>Join Hazo today and start your journey towards a happier, more fulfilled life!</p>
+            <a href="#call-to-action" class="button">Start Your Journey!</a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.app.hazoapp" target="_blank" class="playstore-link" aria-label="Get it on Google Play">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hazo. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
